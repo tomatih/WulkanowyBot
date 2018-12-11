@@ -22,4 +22,9 @@ async def on_command_error(ctx,error):
     await ctx.send("An error occured\n{}".format(error))
     print(error)
 
-bot.run(open("tokens.txt").read())
+@bot.event
+async def on_member_join(member):
+    await member.send("To get a register flavour specific class use command `$switch_refisters [your_refister_flavor]`")
+    await member.send("To get a list of avaible flavors run `$list_registers`")
+
+bot.run(open("tokens.txt").readlines()[1].replace("\n",''))

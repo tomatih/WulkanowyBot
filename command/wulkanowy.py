@@ -53,7 +53,14 @@ class wulkanowycog():
         except discord.errors.Forbidden:
             await ctx.send("Failed to set the role. Missing Permissions")
 
-    
+    @commands.command()
+    async def list_registers(self,ctx):
+        """Lists all the avaible registers"""
+        em = discord.Embed()
+        em.title = "Registers list"
+        em.description='\n'.join(self.role_types)
+        em.colour = discord.Color.from_rgb(0,0,255)
+        await ctx.send(embed=em)
 
 def setup(bot):
     bot.add_cog(wulkanowycog(bot))
